@@ -970,6 +970,16 @@ class TestPdist(TestCase):
         assert_allclose(m, 0.5, rtol=0, atol=1e-10)
         assert_allclose(m2, 0.5, rtol=0, atol=1e-10)
 
+    def test_pdist_dice_empty(self):
+        m = dice(np.array([0, 0, 0]),
+                 np.array([0, 0, 0]))
+        m2 = dice(np.array([0, 0, 0], dtype=bool),
+                 np.array([0, 0, 0], dtype=bool))
+        if verbose > 2:
+            print(m)
+        assert_allclose(m, 0.0, rtol=0, atol=1e-10)
+        assert_allclose(m2, 0.0, rtol=0, atol=1e-10)
+
     def test_pdist_dice_match(self):
         D = eo['random-bool-data']
         if verbose > 2:

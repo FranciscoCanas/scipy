@@ -808,6 +808,8 @@ def dice(u, v):
     """
     u = _validate_vector(u)
     v = _validate_vector(v)
+    if not np.any(u) and not np.any(v):
+        return 0.0
     if u.dtype == bool:
         ntt = (u & v).sum()
     else:
